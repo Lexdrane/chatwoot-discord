@@ -61,6 +61,7 @@ Before you begin, ensure you have the following:
       ![image](https://i.imgur.com/FZcO3xr.png)
       * `CHATWOOT_INBOX_IDENTIFIER`: The identifier for your Chatwoot API inbox. You can find this in your Chatwoot inbox settings under `Settings` -\> `Inboxes` -\> `Your Webhook Inbox` -\> `Configuration` -\> `Inbox Identifier` .
       ![image](https://i.imgur.com/FZcO3xr.png)
+      * `CHATWOOT_ACCOUNT_ID` (Optional but Recommended for attachments): Your Chatwoot account ID. This is required for direct attachment uploads to Chatwoot's standard API. You can find it in the URL when you're logged into Chatwoot (e.g., `https://app.chatwoot.com/app/accounts/YOUR_ACCOUNT_ID/inboxes`). If not provided, attachments will be sent as URLs.
       * `WEBHOOK_PORT`: The port your webhook server will listen on (default: `3000`).
       * `PUBLIC_URL`: The url of your webhook server will be available.
 
