@@ -42,20 +42,27 @@ Before you begin, ensure you have the following:
 3.  **Create a `.env` file** in the root directory of your project and populate it with your environment variables:
 
     ```env
-    DISCORD_BOT_TOKEN="YOUR_DISCORD_BOT_TOKEN"
-    CHATWOOT_BASE_URL="YOUR_CHATWOOT_INSTANCE_URL"
-    CHATWOOT_API_ACCESS_TOKEN="YOUR_CHATWOOT_GLOBAL_API_ACCESS_TOKEN"
-    CHATWOOT_INBOX_IDENTIFIER="YOUR_CHATWOOT_INBOX_IDENTIFIER"
-    CHATWOOT_ACCOUNT_ID="YOUR_CHATWOOT_ACCOUNT_ID"
-    PORT=3000
+     # Discord Configuration
+     DISCORD_BOT_TOKEN=
+     
+     # Chatwoot Configuration
+     CHATWOOT_BASE_URL=
+     CHATWOOT_API_ACCESS_TOKEN=
+     CHATWOOT_INBOX_IDENTIFIER=
+     
+     # Webhook Configuration
+     WEBHOOK_PORT=3000
+     PUBLIC_URL=
     ```
 
       * `DISCORD_BOT_TOKEN`: Your Discord bot's token from the Discord Developer Portal.
       * `CHATWOOT_BASE_URL`: The URL of your Chatwoot instance (e.g., `https://app.chatwoot.com` or `https://your-self-hosted.com`).
       * `CHATWOOT_API_ACCESS_TOKEN`: A global API access token from your Chatwoot profile settings (`Settings` -\> `Profile Settings` -\> `Access Token`).
-      * `CHATWOOT_INBOX_IDENTIFIER`: The identifier for your Chatwoot API inbox. You can find this in your Chatwoot inbox settings under `Configuration` -\> `API` -\> `Inbox Identifier`.
-      * `CHATWOOT_ACCOUNT_ID` (Optional but Recommended for attachments): Your Chatwoot account ID. This is required for direct attachment uploads to Chatwoot's standard API. You can find it in the URL when you're logged into Chatwoot (e.g., `https://app.chatwoot.com/app/accounts/YOUR_ACCOUNT_ID/inboxes`). If not provided, attachments will be sent as URLs.
-      * `PORT`: The port your webhook server will listen on (default: `3000`).
+      ![image](https://i.imgur.com/FZcO3xr.png)
+      * `CHATWOOT_INBOX_IDENTIFIER`: The identifier for your Chatwoot API inbox. You can find this in your Chatwoot inbox settings under `Settings` -\> `Inboxes` -\> `Your Webhook Inbox` -\> `Configuration` -\> `Inbox Identifier` .
+      ![image](https://i.imgur.com/FZcO3xr.png)
+      * `WEBHOOK_PORT`: The port your webhook server will listen on (default: `3000`).
+      * `PUBLIC_URL`: The url of your webhook server will be available.
 
 ## Running the Bot
 
@@ -76,7 +83,7 @@ For Chatwoot to send messages back to Discord, you need to configure a webhook i
 3.  Select the API inbox you are using for this integration.
 4.  Go to `Webhooks` -\> `Add Webhook`.
 5.  **Payload URL**: Enter the URL where your bot's webhook server is accessible.
-      * If running locally for testing, you'll need a tunneling service like `ngrok`. For example, if your bot is running on `localhost:3000`, and `ngrok` gives you `https://your-ngrok-id.ngrok-free.app`, your Payload URL would be `https://your-ngrok-id.ngrok-free.app/webhook`.
+      * If running locally for testing, you'll need a tunneling service like `ngrok`. For example, if your bot is running on `localhost:3000`, and `ngrok` gives you `https://your-ngrok-id.ngrok-free.app`, your Payload URL would be `https://PUBLIC_URL/webhook`.
       * In a production environment, this would be your server's public IP or domain name followed by `/webhook` (e.g., `https://your-domain.com/webhook`).
 6.  **Webhook Events**: Select `message_created` and `conversation_status_changed`.
 7.  Click `Create Webhook`.
